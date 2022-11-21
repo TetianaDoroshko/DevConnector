@@ -2,7 +2,7 @@ const RequestError = require("../../helpers/RequestError");
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
 
-const createProfile = async (req, res) => {
+const addProfile = async (req, res) => {
   const { _id } = req.user;
   const {
     company,
@@ -47,4 +47,4 @@ const createProfile = async (req, res) => {
   profile = await Profile.create(newProfile);
   return res.json(profile);
 };
-module.exports = createProfile;
+module.exports = addProfile;

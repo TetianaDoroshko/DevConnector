@@ -18,5 +18,15 @@ const addProfileSchema = [
   body("status", "Status is required").not().isEmpty(),
   body("skills", "Skills is required").not().isEmpty(),
 ];
+const addExperienceSchema = [
+  body("title", "Title is required").not().isEmpty(),
+  body("company", "Company is required").not().isEmpty(),
+  body("from", "From date is required").not().isEmpty(),
+];
 
-module.exports = { registerSchema, loginSchema, addProfileSchema };
+module.exports = {
+  registerSchema,
+  loginSchema,
+  addProfileSchema,
+  addExperienceSchema,
+};
