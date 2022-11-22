@@ -23,7 +23,7 @@ const register = async (req, res) => {
   });
 
   let newUser = await User.create({
-    name,
+    name: name.trim(),
     email,
     avatar,
     password: await bcrypt.hash(password, await bcrypt.genSalt(10)),

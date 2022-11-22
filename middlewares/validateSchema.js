@@ -23,10 +23,19 @@ const addExperienceSchema = [
   body("company", "Company is required").not().isEmpty(),
   body("from", "From date is required").not().isEmpty(),
 ];
+const addEducationSchema = [
+  body("school", "School is required").not().isEmpty(),
+  body("degree", "Degree is required").not().isEmpty(),
+  body("fieldofstudy", "Field of study is required").not().isEmpty(),
+  body("from", "From date is required").not().isEmpty(),
+];
+const postSchema = [body("text", "Text is required").not().isEmpty()];
 
 module.exports = {
   registerSchema,
   loginSchema,
   addProfileSchema,
   addExperienceSchema,
+  addEducationSchema,
+  postSchema,
 };

@@ -4,6 +4,9 @@ const {
   addProfile,
   addExperience,
   deleteExperience,
+  addEducation,
+  deleteEducation,
+  getGitRepos,
   getAllProfiles,
   getProfileByUserId,
   deleteMyProfile,
@@ -12,7 +15,9 @@ const { auth, ctrlWrapper, validate, isValidId } = require("../../middlewares");
 const {
   addProfileSchema,
   addExperienceSchema,
+  addEducationSchema,
 } = require("../../middlewares/validateSchema");
+
 const router = express.Router();
 
 router.get("/me", auth, ctrlWrapper(getMyProfile));
@@ -29,6 +34,14 @@ router.delete(
   isValidId,
   ctrlWrapper(deleteExperience)
 );
+router.patch(
+  "/education",
+  auth,
+  validate(addEducationSchema),
+  ctrlWrapper(addEducation)
+);
+router.delete("/education/:id", auth, isValidId, ctrlWrapper(deleteEducation));
+router.get("/github/:username", ctrlWrapper(getGitRepos));
 router.get("/", ctrlWrapper(getAllProfiles));
 router.get("/:id", isValidId, ctrlWrapper(getProfileByUserId));
 router.delete("/", auth, ctrlWrapper(deleteMyProfile));

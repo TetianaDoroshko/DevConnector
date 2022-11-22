@@ -5,10 +5,21 @@ const getMyProfile = require("./users/getMyProfile");
 const addProfile = require("./users/addProfile");
 const addExperience = require("./users/addExperience");
 const deleteExperience = require("./users/deleteExperience");
-
+const addEducation = require("./users/addEducation");
+const deleteEducation = require("./users/deleteEducation");
+const getGitRepos = require("./users/getGitRepos");
 const getAllProfiles = require("./users/getAllProfiles");
 const getProfileByUserId = require("./users/getProfileByUserId");
 const deleteMyProfile = require("./users/deleteMyProfile");
+
+const getAllPosts = require("./posts/getAllPosts");
+const createPost = require("./posts/createPost");
+const getPostById = require("./posts/getPostById");
+const deletePostById = require("./posts/deletePostById");
+const likePost = require("./posts/likePost");
+const unlikePost = require("./posts/unlikePost");
+const addCommentPost = require("./posts/addCommentPost");
+const deleteCommentPost = require("./posts/deleteCommentPost");
 
 module.exports = {
   login,
@@ -16,8 +27,19 @@ module.exports = {
   getMyProfile,
   addProfile,
   addExperience,
+  deleteExperience,
+  addEducation,
+  deleteEducation,
+  getGitRepos,
   getAllProfiles,
   getProfileByUserId,
   deleteMyProfile,
-  deleteExperience,
+  getAllPosts,
+  createPost,
+  getPostById,
+  deletePostById,
+  likePost,
+  unlikePost,
+  addCommentPost,
+  deleteCommentPost,
 };
