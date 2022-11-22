@@ -8,7 +8,6 @@ const secret = process.env.JWT_SECRET;
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
-  console.log("register controller");
 
   const user = await User.findOne({ email });
 
@@ -29,7 +28,6 @@ const register = async (req, res) => {
     password: await bcrypt.hash(password, await bcrypt.genSalt(10)),
   });
 
-  console.log(secret);
   const token = jwt.sign({ _id: newUser._id }, secret, { expiresIn: "1d" });
 
   newUser = await User.findByIdAndUpdate(

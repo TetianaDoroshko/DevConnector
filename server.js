@@ -1,6 +1,6 @@
 const express = require("express");
+const { default: mongoose } = require("mongoose");
 require("dotenv").config();
-const connectDB = require("./config/db");
 const {
   usersRouter,
   authRouter,
@@ -10,8 +10,19 @@ const {
 
 const app = express();
 
-const { PORT = 5000 } = process.env;
+const { PORT = 5000, MONGO_URI } = process.env;
 
+const connectDB = async () => {
+  try {
+    await mongoose.connect(MONGO_URI, {
+      useNewUrlParser: true,
+    });
+    console.log("MongoDB connected");
+  } catch (error) {
+    console.log(error.message);
+    process.exit(1);
+  }
+};
 connectDB();
 
 app.use(express.json({ extended: false }));
@@ -31,7 +42,6 @@ app.use((req, res) => {
 
 app.use((err, req, res, next) => {
   const { status = 500, message = "Server error" } = err;
-  console.log("express error handler");
   res.status(status).json({ message });
 });
 

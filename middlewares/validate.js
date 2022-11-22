@@ -13,8 +13,6 @@ const validate = (validations) => {
       return next();
     }
 
-    console.log("validate middlevare - errors", errors);
-
     next(RequestError(400, `Validation error. ${errors.errors[0].msg}`));
   };
 };
