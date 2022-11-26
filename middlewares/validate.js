@@ -3,6 +3,8 @@ const RequestError = require("../helpers/RequestError");
 
 const validate = (validations) => {
   return async (req, res, next) => {
+    // console.log(req);
+
     for (let validation of validations) {
       const result = await validation.run(req);
       if (result.errors.length) break;
