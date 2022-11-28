@@ -14,7 +14,7 @@ export const Login = () => {
   });
 
   if (isAuthenticated) {
-    return <Navigate to="/developers" />;
+    return <Navigate to="/dashboard" />;
   }
 
   const onChange = (e) => {

@@ -18,7 +18,7 @@ export const Register = () => {
   });
 
   if (isAuthenticated) {
-    return <Navigate to="/developers" />;
+    return <Navigate to="/dashboard" />;
   }
 
   const onChange = (e) => {
