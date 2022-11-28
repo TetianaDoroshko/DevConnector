@@ -1,9 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/operations(thunks)";
 
 export const Login = () => {
+  const dispatch = useDispatch();
+
   const [formData, setformData] = useState({
     email: "",
     password: "",
@@ -19,14 +22,7 @@ export const Login = () => {
   const onFormSumit = async (e) => {
     e.preventDefault();
     const newUser = { email, password };
-    try {
-      console.log(newUser);
-      const res = await axios.post("/api/users", newUser);
-      console.log(res.data);
-    } catch (error) {
-      console.log(error.response.data);
-      // TODO!!! Warning alert
-    }
+    dispatch(login(newUser));
   };
 
   const { email, password } = formData;
