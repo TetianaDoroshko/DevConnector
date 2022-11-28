@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 // import { callAlert } from "../../helpers/alerts";
-import { setAuthToken } from "../../helpers/setAuthToken";
+import { setAuthToken } from "../../../helpers/setAuthToken";
 
 export const refreshToken = createAsyncThunk(
   "auth/refreshToken",

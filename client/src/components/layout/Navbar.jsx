@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { logout } from "../../redux/operations(thunks)/logout";
+import { logout } from "../../redux/operations(thunks)/auth/logout";
 import { FaSignOutAlt } from "react-icons/fa";
 
 export const Navbar = () => {

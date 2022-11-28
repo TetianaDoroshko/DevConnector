@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { callAlert } from "../../helpers/alerts";
+import { callAlert } from "../../../helpers/alerts";
 
 export const register = createAsyncThunk(
   "auth/register",
