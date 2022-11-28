@@ -11,7 +11,7 @@ const authSlice = createSlice({
   },
   extraReducers: {
     // register
-    [register.pending]: (store, { payload }) => {
+    [register.pending]: (store) => {
       localStorage.removeItem("token");
       store.token = null;
       store.isAuthenticated = false;
@@ -24,11 +24,11 @@ const authSlice = createSlice({
       store.isAuthenticated = true;
       store.loading = false;
     },
-    [register.rejected]: (store, { payload }) => {
+    [register.rejected]: (store) => {
       store.loading = false;
     },
     //// refresh
-    [refreshToken.pending]: (store, { payload }) => {
+    [refreshToken.pending]: (store) => {
       // store.token = null;
       store.loading = true;
     },
@@ -38,7 +38,7 @@ const authSlice = createSlice({
       store.isAuthenticated = true;
       store.loading = false;
     },
-    [refreshToken.rejected]: (store, { payload }) => {
+    [refreshToken.rejected]: (store) => {
       localStorage.removeItem("token");
       store.user = null;
       store.token = null;
@@ -46,7 +46,7 @@ const authSlice = createSlice({
       store.loading = false;
     },
     ////// login
-    [login.pending]: (store, { payload }) => {
+    [login.pending]: (store) => {
       localStorage.removeItem("token");
       store.user = null;
       store.token = null;
@@ -60,11 +60,11 @@ const authSlice = createSlice({
       store.isAuthenticated = true;
       store.loading = false;
     },
-    [login.rejected]: (store, { payload }) => {
+    [login.rejected]: (store) => {
       store.loading = false;
     },
     // logout
-    [logout.fulfilled]: (store, { payload }) => {
+    [logout.fulfilled]: (store) => {
       store.user = null;
       store.token = null;
       store.isAuthenticated = false;
