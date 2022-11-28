@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, refreshToken, login } from "./operations(thunks)";
+import { register, refreshToken, login, logout } from "./operations(thunks)";
 
 const authSlice = createSlice({
   name: "auth",
@@ -61,6 +61,13 @@ const authSlice = createSlice({
       store.loading = false;
     },
     [login.rejected]: (store, { payload }) => {
+      store.loading = false;
+    },
+    // logout
+    [logout.fulfilled]: (store, { payload }) => {
+      store.user = null;
+      store.token = null;
+      store.isAuthenticated = false;
       store.loading = false;
     },
   },
