@@ -1,16 +1,21 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/operations(thunks)";
 
 export const Login = () => {
   const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const [formData, setformData] = useState({
     email: "",
     password: "",
   });
+
+  if (isAuthenticated) {
+    return <Navigate to="/developers" />;
+  }
 
   const onChange = (e) => {
     setformData((prevData) => ({

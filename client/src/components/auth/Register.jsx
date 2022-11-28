@@ -1,13 +1,14 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Navigate } from "react-router-dom";
 import { useAlert } from "../../helpers/alerts";
 import { register } from "../../redux/operations(thunks)/register";
 
 export const Register = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const [formData, setformData] = useState({
     name: "",
@@ -15,6 +16,10 @@ export const Register = () => {
     password: "",
     password2: "",
   });
+
+  if (isAuthenticated) {
+    return <Navigate to="/developers" />;
+  }
 
   const onChange = (e) => {
     setformData((prevData) => ({
