@@ -11,7 +11,7 @@ export const getProfile = createAsyncThunk(
 
       return res.data;
     } catch (error) {
-      callAlert(error.response.data.message, "danger");
+      // callAlert(error.response.data.message, "danger");
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }

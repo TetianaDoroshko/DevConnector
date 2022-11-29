@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getProfile } from "./operations(thunks)";
+import { getProfile, logout } from "./operations(thunks)";
 
 const profileSlice = createSlice({
   name: "profile",
@@ -11,6 +11,10 @@ const profileSlice = createSlice({
     error: {},
   },
   extraReducers: {
+    [logout.fulfilled]: (state, { payload }) => {
+      state.profile = null;
+      state.repos = [];
+    },
     [getProfile.pending]: (state, { payload }) => {
       state.loading = true;
     },

@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { logout } from "../../redux/operations(thunks)/auth/logout";
-import { FaSignOutAlt } from "react-icons/fa";
+import { FaSignOutAlt, FaUserAlt } from "react-icons/fa";
 
 export const Navbar = () => {
   const dispatch = useDispatch();
@@ -22,12 +22,15 @@ export const Navbar = () => {
       {isAuthenticated && (
         <ul>
           <li>
-            <NavLink
-              to="#"
-              onClick={logoutHandler}
-              style={{ display: "flex", alignItems: "center" }}
-            >
-              <FaSignOutAlt style={{ marginRight: "5px" }} /> Logout
+            <NavLink to="/dashboard">
+              <FaUserAlt style={{ marginRight: "5px" }} />{" "}
+              <span className="hide-sm">Dashboard</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="#" onClick={logoutHandler}>
+              <FaSignOutAlt style={{ marginRight: "5px" }} />{" "}
+              <span className="hide-sm">Logout</span>
             </NavLink>
           </li>
         </ul>
