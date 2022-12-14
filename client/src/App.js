@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { refreshToken } from "./redux/operations(thunks)";
 import { Dashboard } from "./components/dashboard/Dashboard";
 import { PrivateRoute } from "./components/routing/PrivateRoute";
+import { CreateProfile } from "./components/profile-forms/CreateProfile-form";
 
 const App = () => {
   const alerts = useSelector((store) => store.alert);
@@ -45,6 +46,14 @@ const App = () => {
           element={
             <PrivateRoute>
               <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/create-profile"
+          element={
+            <PrivateRoute>
+              <CreateProfile />
             </PrivateRoute>
           }
         />
