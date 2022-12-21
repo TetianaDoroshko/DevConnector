@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAlert } from "../../helpers/alerts";
 import { getProfile } from "../../redux/operations(thunks)";
 import { addProfile } from "../../redux/operations(thunks)/profile/addProfile";
 
@@ -19,16 +20,17 @@ export const EditProfile = () => {
 
   const [formData, setFormData] = useState(profile);
   const [showSocialInputs, setshowSocialInputs] = useState(false);
-  const [edit, setEdit] = useState(false);
 
-  const locationPage = useLocation();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProfile());
   }, [dispatch]);
 
+  const alert = useAlert();
+
   if (!profile) {
+    alert("danger", "You haven't created a profile yet");
     return navigate("/create-profile");
   }
 
@@ -41,7 +43,13 @@ export const EditProfile = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    dispatch(addProfile({ formData, edit }));
+    dispatch(
+      addProfile({
+        formData,
+        edit: true,
+        navigate: () => navigate("/dashboard"),
+      })
+    );
   };
 
   const {
@@ -229,12 +237,9 @@ export const EditProfile = () => {
         <button type="submit" className="btn btn-primary my-1">
           Send
         </button>
-        {/* <Link
-          className="btn btn-light my-1"
-          to={locationPage.state.from ?? "/dashboard"}
-        >
+        <Link className="btn btn-light my-1" to={"/dashboard"}>
           Go Back
-        </Link> */}
+        </Link>
       </form>
     </section>
   );

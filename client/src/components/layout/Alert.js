@@ -3,12 +3,22 @@ import PropTypes from "prop-types";
 
 export const Alert = ({ alerts }) => {
   const alertMarkup = alerts.map((alert) => (
-    <div key={alert.id} className={`alert alert-${alert.type}`}>
+    <div
+      key={alert.id}
+      className={`alert alert-${alert.type ? alert.type : "light"}`}
+    >
       {alert.message}
     </div>
   ));
 
-  return <div className="container">{alerts && alertMarkup}</div>;
+  return (
+    <div
+      className="container"
+      style={{ height: "80px", marginTop: "10px", marginBottom: "0" }}
+    >
+      {alerts && alertMarkup}
+    </div>
+  );
 };
 
 Alert.propTypes = {

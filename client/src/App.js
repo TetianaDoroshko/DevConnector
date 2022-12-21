@@ -1,5 +1,6 @@
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
+import { Toaster } from "react-hot-toast";
 
 import { Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/layout/Navbar";
@@ -7,12 +8,14 @@ import { Landing } from "./components/layout/Landing";
 import { Register } from "./components/auth/Register";
 import { Login } from "./components/auth/Login";
 import { Alert } from "./components/layout/Alert";
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import { refreshToken } from "./redux/operations(thunks)";
 import { Dashboard } from "./components/dashboard/Dashboard";
 import { PrivateRoute } from "./components/routing/PrivateRoute";
 import { CreateProfile } from "./components/profile-forms/AddProfile";
 import { EditProfile } from "./components/profile-forms/EditProfile";
+import { AddExperience } from "./components/profile-forms/AddExperience";
+import { AddEducation } from "./components/profile-forms/AddEducation";
 
 const App = () => {
   const alerts = useSelector((store) => store.alert);
@@ -27,14 +30,11 @@ const App = () => {
     } else {
       return;
     }
-
-    // return () => {
-    //   second;
-    // };
   }, [dispatch, token]);
 
   return (
     <>
+      <Toaster />
       <Navbar />
       <Alert alerts={alerts} />
       <Routes>
@@ -45,6 +45,8 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/create-profile" element={<CreateProfile />} />
           <Route path="/edit-profile" element={<EditProfile />} />
+          <Route path="/add-experience" element={<AddExperience />} />
+          <Route path="/add-education" element={<AddEducation />} />
         </Route>
       </Routes>
     </>

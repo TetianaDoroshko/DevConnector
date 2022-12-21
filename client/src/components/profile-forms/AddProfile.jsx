@@ -26,7 +26,6 @@ export const CreateProfile = () => {
     instagram: "",
   });
   const [showSocialInputs, setshowSocialInputs] = useState(false);
-  const [edit, setEdit] = useState(false);
 
   const locationPage = useLocation();
   const dispatch = useDispatch();
@@ -40,7 +39,7 @@ export const CreateProfile = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    dispatch(addProfile({ formData, edit }));
+    dispatch(addProfile({ formData, edit: false }));
   };
 
   const {

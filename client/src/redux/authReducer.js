@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, refreshToken, login, logout } from "./operations(thunks)";
+import {
+  register,
+  refreshToken,
+  login,
+  logout,
+  deleteAccount,
+} from "./operations(thunks)";
 
 const authSlice = createSlice({
   name: "auth",
@@ -65,6 +71,13 @@ const authSlice = createSlice({
     },
     // logout
     [logout.fulfilled]: (store) => {
+      store.user = null;
+      store.token = null;
+      store.isAuthenticated = false;
+      store.loading = false;
+    },
+    // delete account
+    [deleteAccount.fulfilled]: (store) => {
       store.user = null;
       store.token = null;
       store.isAuthenticated = false;

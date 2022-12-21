@@ -34,13 +34,18 @@ img {
   width: 100%;
 }
 
+/* .toaster {
+  padding: 50px;
+  background-color: #28a745;
+} */
+
 /* Utilities */
 .container {
   max-width: 1100px;
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
@@ -133,6 +138,7 @@ img {
   padding: 0.4rem 1.3rem;
   font-size: 1rem;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
   margin-right: 0.5rem;
   transition: opacity 0.2s ease-in;
@@ -207,6 +213,12 @@ img {
 
 .btn:hover {
   opacity: 0.8;
+}
+
+.btn-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bg-light,
@@ -360,6 +372,12 @@ button {
 }
 
 /* Profiles Page */
+
+.dash-buttons {
+  display: flex;
+  align-items: center;
+}
+
 .profile {
   display: grid;
   grid-template-columns: 2fr 4fr 2fr;
@@ -571,12 +589,6 @@ button {
     flex-direction: column;
   }
 
-  .dash-buttons a {
-    display: block;
-    width: 100%;
-    margin-bottom: 0.2rem;
-  }
-
   .post {
     grid-template-columns: 1fr;
   }
@@ -584,4 +596,16 @@ button {
   .post button {
     padding: 0.3rem 0.4rem;
   }
+}
+/* Message */
+.pop-up-message {
+  padding: 0.8rem;
+  opacity: 0.9;
+  background: var(--light-color);
+  color: #333;
+}
+.btn-wrap {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
 }

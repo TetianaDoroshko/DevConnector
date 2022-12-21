@@ -19,10 +19,15 @@ const addProfile = async (req, res) => {
     linkedin,
   } = req.body;
 
+  const skillsData =
+    typeof skills === "string"
+      ? skills.split(",").map((skill) => skill.trim())
+      : skills;
+
   let newProfile = {
     user: _id,
     status,
-    skills: skills.split(",").map((skill) => skill.trim()),
+    skills: skillsData,
   };
   if (company) newProfile.company = company;
   if (website) newProfile.website = website;
