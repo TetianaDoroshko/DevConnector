@@ -8,6 +8,9 @@ import {
   deleteExperience,
   deleteEducation,
   deleteAccount,
+  getAllProfiles,
+  getProfileById,
+  getGitRepos,
 } from "./operations(thunks)";
 
 const initialState = {
@@ -107,6 +110,30 @@ const profileSlice = createSlice({
       state.loading = false;
     },
     [deleteAccount.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+    },
+    [getAllProfiles.pending]: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    [getAllProfiles.fulfilled]: (state, { payload }) => {
+      state.profiles = payload;
+      state.loading = false;
+    },
+    [getAllProfiles.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+    },
+    [getGitRepos.pending]: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    [getGitRepos.fulfilled]: (state, { payload }) => {
+      state.repos = payload;
+      state.loading = false;
+    },
+    [getGitRepos.rejected]: (state, { payload }) => {
       state.error = payload;
       state.loading = false;
     },

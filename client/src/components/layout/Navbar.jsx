@@ -22,6 +22,9 @@ export const Navbar = () => {
       {isAuthenticated && (
         <ul>
           <li>
+            <NavLink to="/profiles">Developers</NavLink>
+          </li>
+          <li>
             <NavLink to="/dashboard">
               <FaUserAlt style={{ marginRight: "5px" }} />{" "}
               <span className="hide-sm">Dashboard</span>
@@ -38,7 +41,7 @@ export const Navbar = () => {
       {!isAuthenticated && (
         <ul>
           <li>
-            <NavLink to="/developers">Developers</NavLink>
+            <NavLink to="/profiles">Developers</NavLink>
           </li>
           <li>
             <NavLink to="/register">Register</NavLink>

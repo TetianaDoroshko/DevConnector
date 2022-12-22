@@ -10,3 +10,7 @@ export { addEducation } from "./profile/addEducation";
 export { deleteExperience } from "./profile/deleteExperience";
 export { deleteEducation } from "./profile/deleteEducation";
 export { deleteAccount } from "./profile/deleteAccount";
+
+export { getAllProfiles } from "./profile/getAllProfiles";
+export { getProfileById } from "./profile/getProfileById";
+export { getGitRepos } from "./profile/getGitRepos";
