@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-// import { callAlert } from "../../../helpers/alerts";
 
 export const getGitRepos = createAsyncThunk(
   "gitRepos/get",

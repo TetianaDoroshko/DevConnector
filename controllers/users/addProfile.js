@@ -12,11 +12,7 @@ const addProfile = async (req, res) => {
     status,
     githubusername,
     skills,
-    youtube,
-    facebook,
-    twitter,
-    instagram,
-    linkedin,
+    social: { youtube, facebook, twitter, instagram, linkedin },
   } = req.body;
 
   const skillsData =

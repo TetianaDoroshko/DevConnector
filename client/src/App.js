@@ -17,6 +17,7 @@ import { EditProfile } from "./components/profile-forms/EditProfile";
 import { AddExperience } from "./components/profile-forms/AddExperience";
 import { AddEducation } from "./components/profile-forms/AddEducation";
 import { ProfilesList } from "./components/profiles/ProfilesList";
+import Profile from "./components/profile/Profile";
 
 const App = () => {
   const alerts = useSelector((store) => store.alert);
@@ -44,6 +45,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profiles" element={<ProfilesList />} />
+        <Route path="/profile/:userId" element={<Profile />} />
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/create-profile" element={<CreateProfile />} />

@@ -113,6 +113,7 @@ const profileSlice = createSlice({
       state.error = payload;
       state.loading = false;
     },
+    // get all profiles
     [getAllProfiles.pending]: (state) => {
       state.loading = true;
       state.error = false;
@@ -125,6 +126,20 @@ const profileSlice = createSlice({
       state.error = payload;
       state.loading = false;
     },
+    // get profile by id
+    [getProfileById.pending]: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    [getProfileById.fulfilled]: (state, { payload }) => {
+      state.profile = payload;
+      state.loading = false;
+    },
+    [getProfileById.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+    },
+    // get Git repositories
     [getGitRepos.pending]: (state) => {
       state.loading = true;
       state.error = false;

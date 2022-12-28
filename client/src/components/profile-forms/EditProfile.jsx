@@ -7,7 +7,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "../../helpers/alerts";
 import { getProfile } from "../../redux/operations(thunks)";
 import { addProfile } from "../../redux/operations(thunks)/profile/addProfile";
@@ -40,6 +40,12 @@ export const EditProfile = () => {
       [e.target.name]: e.target.value,
     }));
   };
+  const onInputSocialChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      social: { ...prevState.social, [e.target.name]: e.target.value },
+    }));
+  };
 
   const onFormSubmit = (e) => {
     e.preventDefault();
@@ -60,12 +66,10 @@ export const EditProfile = () => {
     skills,
     githubusername,
     bio,
-    twitter,
-    facebook,
-    linkedin,
-    youtube,
-    instagram,
+    social = {},
   } = formData;
+
+  const { twitter, facebook, linkedin, youtube, instagram } = social;
 
   return (
     <section className="container">
@@ -178,13 +182,12 @@ export const EditProfile = () => {
           <>
             <div className="form-group social-input">
               <FaTwitter className="icon-fa fa-twitter" />
-              {/* <i className="fab fa-twitter fa-2x"></i> */}
               <input
                 type="text"
                 placeholder="Twitter URL"
                 name="twitter"
                 value={twitter}
-                onChange={onInputChange}
+                onChange={onInputSocialChange}
               />
             </div>
 
@@ -195,7 +198,7 @@ export const EditProfile = () => {
                 placeholder="Facebook URL"
                 name="facebook"
                 value={facebook}
-                onChange={onInputChange}
+                onChange={onInputSocialChange}
               />
             </div>
 
@@ -206,7 +209,7 @@ export const EditProfile = () => {
                 placeholder="YouTube URL"
                 name="youtube"
                 value={youtube}
-                onChange={onInputChange}
+                onChange={onInputSocialChange}
               />
             </div>
 
@@ -217,7 +220,7 @@ export const EditProfile = () => {
                 placeholder="Linkedin URL"
                 name="linkedin"
                 value={linkedin}
-                onChange={onInputChange}
+                onChange={onInputSocialChange}
               />
             </div>
 
@@ -228,7 +231,7 @@ export const EditProfile = () => {
                 placeholder="Instagram URL"
                 name="instagram"
                 value={instagram}
-                onChange={onInputChange}
+                onChange={onInputSocialChange}
               />
             </div>
           </>
