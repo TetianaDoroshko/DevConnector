@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
 import { Spinner } from "../layout/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileById } from "../../redux/operations(thunks)/profile/getProfileById";
@@ -8,8 +7,9 @@ import { ProfileTop } from "./ProfileTop";
 import { ProfileAbout } from "./ProfileAbout";
 import { ProfileExperience } from "./ProfileExperience";
 import { ProfileEducation } from "./ProfileEducation";
+import { ProfileGitHub } from "./ProfileGitHub";
 
-const Profile = (props) => {
+export const Profile = () => {
   const dispatch = useDispatch();
   const { userId } = useParams();
   const profile = useSelector((state) => state.profile.profile);
@@ -40,13 +40,10 @@ const Profile = (props) => {
             <ProfileAbout profile={profile} />
             <ProfileEducation profile={profile} />
             <ProfileExperience profile={profile} />
+            <ProfileGitHub profile={profile} />
           </div>
         </>
       )}
     </section>
   );
 };
-
-Profile.propTypes = {};
-
-export default Profile;

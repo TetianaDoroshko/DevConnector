@@ -14,3 +14,8 @@ export { deleteAccount } from "./profile/deleteAccount";
 export { getAllProfiles } from "./profile/getAllProfiles";
 export { getProfileById } from "./profile/getProfileById";
 export { getGitRepos } from "./profile/getGitRepos";
+
+export { getPosts } from "./post/getPosts";
+export { likePost } from "./post/likePost";
+export { unlikePost } from "./post/unlikePost";
+export { deletePost } from "./post/deletePost";

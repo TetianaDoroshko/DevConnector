@@ -9,7 +9,6 @@ export const getGitRepos = createAsyncThunk(
 
       return res.data;
     } catch (error) {
-      // callAlert(error.response.data.message, "danger");
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }

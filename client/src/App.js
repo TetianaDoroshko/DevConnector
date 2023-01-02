@@ -17,7 +17,8 @@ import { EditProfile } from "./components/profile-forms/EditProfile";
 import { AddExperience } from "./components/profile-forms/AddExperience";
 import { AddEducation } from "./components/profile-forms/AddEducation";
 import { ProfilesList } from "./components/profiles/ProfilesList";
-import Profile from "./components/profile/Profile";
+import { Profile } from "./components/profile/Profile";
+import { Post } from "./components/posts/Post";
 
 const App = () => {
   const alerts = useSelector((store) => store.alert);
@@ -52,6 +53,7 @@ const App = () => {
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/add-experience" element={<AddExperience />} />
           <Route path="/add-education" element={<AddEducation />} />
+          <Route path="/posts" element={<Post />} />
         </Route>
       </Routes>
     </>

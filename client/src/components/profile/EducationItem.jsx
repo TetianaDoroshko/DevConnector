@@ -8,7 +8,7 @@ const EducationItem = ({ education }) => {
 
   return (
     <div>
-      <h3 class="text-dark">{school}</h3>
+      <h3 className="text-dark">{school}</h3>
       <p>
         <Moment format="YYYY/MM/DD">{from}</Moment> -{" "}
         {current ? "to now" : <Moment format="YYYY/MM/DD">{to}</Moment>}

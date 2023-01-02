@@ -30,6 +30,7 @@ const profileSlice = createSlice({
       state.repos = [];
     },
     [getProfile.pending]: (state, { payload }) => {
+      state.profile = null;
       state.loading = true;
       state.error = false;
     },

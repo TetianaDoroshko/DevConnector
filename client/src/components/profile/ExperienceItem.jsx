@@ -8,7 +8,7 @@ const ExperienceItem = ({ experience }) => {
 
   return (
     <div>
-      <h3 class="text-dark">{company}</h3>
+      <h3 className="text-dark">{company}</h3>
       <p>{location}</p>
       <p>
         <Moment format="YYYY/MM/DD">{from}</Moment> -{" "}
