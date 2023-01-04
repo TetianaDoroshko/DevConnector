@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  addPost,
   deletePost,
+  getPost,
   getPosts,
   likePost,
   unlikePost,
@@ -17,6 +19,7 @@ const postSlice = createSlice({
   name: "post",
   initialState: initialState,
   extraReducers: {
+    // get posts
     [getPosts.pending]: (state, { payload }) => {
       state.posts = null;
       state.loading = true;
@@ -30,6 +33,7 @@ const postSlice = createSlice({
       state.error = payload;
       state.loading = false;
     },
+    // like post
     [likePost.pending]: (state, { payload }) => {
       state.loading = true;
       state.error = false;
@@ -44,6 +48,7 @@ const postSlice = createSlice({
       state.error = payload;
       state.loading = false;
     },
+    // unlike post
     [unlikePost.pending]: (state, { payload }) => {
       state.loading = true;
       state.error = false;
@@ -58,6 +63,20 @@ const postSlice = createSlice({
       state.error = payload;
       state.loading = false;
     },
+    // add post
+    [addPost.pending]: (state, { payload }) => {
+      state.loading = true;
+      state.error = false;
+    },
+    [addPost.fulfilled]: (state, { payload }) => {
+      state.posts.unshift(payload);
+      state.loading = false;
+    },
+    [addPost.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+    },
+    // delete post
     [deletePost.pending]: (state, { payload }) => {
       state.loading = true;
       state.error = false;
@@ -67,6 +86,19 @@ const postSlice = createSlice({
       state.loading = false;
     },
     [deletePost.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+    },
+    // get post by id
+    [getPost.pending]: (state, { payload }) => {
+      state.loading = true;
+      state.error = false;
+    },
+    [getPost.fulfilled]: (state, { payload }) => {
+      state.post = payload;
+      state.loading = false;
+    },
+    [getPost.rejected]: (state, { payload }) => {
       state.error = payload;
       state.loading = false;
     },

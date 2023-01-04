@@ -19,3 +19,5 @@ export { getPosts } from "./post/getPosts";
 export { likePost } from "./post/likePost";
 export { unlikePost } from "./post/unlikePost";
 export { deletePost } from "./post/deletePost";
+export { addPost } from "./post/addPost";
+export { getPost } from "./post/getPost";

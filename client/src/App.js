@@ -18,7 +18,8 @@ import { AddExperience } from "./components/profile-forms/AddExperience";
 import { AddEducation } from "./components/profile-forms/AddEducation";
 import { ProfilesList } from "./components/profiles/ProfilesList";
 import { Profile } from "./components/profile/Profile";
-import { Post } from "./components/posts/Post";
+import { Posts } from "./components/posts/Posts";
+import { Post } from "./components/post/Post";
 
 const App = () => {
   const alerts = useSelector((store) => store.alert);
@@ -41,8 +42,6 @@ const App = () => {
       <Navbar />
       <Alert alerts={alerts} />
       <Routes>
-        <Route path="/" element={<Landing />} />
-
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profiles" element={<ProfilesList />} />
@@ -53,8 +52,11 @@ const App = () => {
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/add-experience" element={<AddExperience />} />
           <Route path="/add-education" element={<AddEducation />} />
-          <Route path="/posts" element={<Post />} />
+          <Route path="/posts" element={<Posts />} />
+          <Route path="/post/:postId" element={<Post />} />
         </Route>
+
+        <Route path="/" element={<Landing />} />
       </Routes>
     </>
   );

@@ -4,8 +4,9 @@ import { getPosts } from "../../redux/operations(thunks)";
 import { Spinner } from "../layout/Spinner";
 import { FaUser } from "react-icons/fa";
 import { PostItem } from "./PostItem";
+import { PostForm } from "./PostForm";
 
-export const Post = () => {
+export const Posts = () => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.post.posts) || [];
   const loading = useSelector((state) => state.post.loading);
@@ -23,13 +24,14 @@ export const Post = () => {
         <FaUser className="icon-fas" />
         Welcome to the community
       </p>
+      <PostForm />
       <div className="posts">
         {posts.map((post) => (
-          <PostItem key={post._id} post={post} />
+          <PostItem key={post._id} post={post} showActions />
         ))}
       </div>
     </section>
   );
 };
 
-Post.propTypes = {};
+Posts.propTypes = {};

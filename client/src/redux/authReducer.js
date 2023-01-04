@@ -35,7 +35,6 @@ const authSlice = createSlice({
     },
     //// refresh
     [refreshToken.pending]: (store) => {
-      // store.token = null;
       store.loading = true;
     },
     [refreshToken.fulfilled]: (store, { payload }) => {
