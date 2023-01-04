@@ -44,7 +44,6 @@ const authSlice = createSlice({
       store.loading = false;
     },
     [refreshToken.rejected]: (store) => {
-      localStorage.removeItem("token");
       store.user = null;
       store.token = null;
       store.isAuthenticated = false;
@@ -52,14 +51,12 @@ const authSlice = createSlice({
     },
     ////// login
     [login.pending]: (store) => {
-      localStorage.removeItem("token");
       store.user = null;
       store.token = null;
       store.isAuthenticated = false;
       store.loading = true;
     },
     [login.fulfilled]: (store, { payload }) => {
-      localStorage.setItem("token", payload.token);
       store.user = payload.user;
       store.token = payload.token;
       store.isAuthenticated = true;

@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  addComment,
   addPost,
+  deleteComment,
   deletePost,
   getPost,
   getPosts,
@@ -99,6 +101,32 @@ const postSlice = createSlice({
       state.loading = false;
     },
     [getPost.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+    },
+    // add comment to post
+    [addComment.pending]: (state, { payload }) => {
+      state.loading = true;
+      state.error = false;
+    },
+    [addComment.fulfilled]: (state, { payload }) => {
+      state.post.comments = payload;
+      state.loading = false;
+    },
+    [addComment.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+    },
+    // delete comment from post
+    [deleteComment.pending]: (state, { payload }) => {
+      state.loading = true;
+      state.error = false;
+    },
+    [deleteComment.fulfilled]: (state, { payload }) => {
+      state.post.comments = payload;
+      state.loading = false;
+    },
+    [deleteComment.rejected]: (state, { payload }) => {
       state.error = payload;
       state.loading = false;
     },

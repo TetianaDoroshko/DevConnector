@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getPost } from "../../redux/operations(thunks)";
 import { Spinner } from "../layout/Spinner";
 import { PostItem } from "../posts/PostItem";
+import { CommentForm } from "./CommentForm";
 
 export const Post = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,17 @@ export const Post = () => {
 
   return (
     <section className="container">
-      {loading ? <Spinner /> : <PostItem post={post} showActions={false} />}
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          <Link to="/posts" className="btn btn-light">
+            Back to Posts
+          </Link>
+          <PostItem post={post} showActions={false} />
+          <CommentForm />
+        </>
+      )}
     </section>
   );
 };
