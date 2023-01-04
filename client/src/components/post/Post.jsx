@@ -5,6 +5,7 @@ import { getPost } from "../../redux/operations(thunks)";
 import { Spinner } from "../layout/Spinner";
 import { PostItem } from "../posts/PostItem";
 import { CommentForm } from "./CommentForm";
+import { CommentItem } from "./CommentItem";
 
 export const Post = () => {
   const dispatch = useDispatch();
@@ -20,14 +21,25 @@ export const Post = () => {
     <section className="container">
       {loading ? (
         <Spinner />
-      ) : (
+      ) : post.comments?.length > 0 ? (
         <>
           <Link to="/posts" className="btn btn-light">
             Back to Posts
           </Link>
           <PostItem post={post} showActions={false} />
           <CommentForm />
+          <div className="comments">
+            {post.comments.map((comment) => (
+              <CommentItem
+                key={comment._id}
+                comment={comment}
+                postId={postId}
+              />
+            ))}
+          </div>
         </>
+      ) : (
+        <div>There aren't comments yet</div>
       )}
     </section>
   );
