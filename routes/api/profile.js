@@ -10,8 +10,16 @@ const {
   getAllProfiles,
   getProfileByUserId,
   deleteMyProfile,
+  updateAvatar,
+  getAvatarById,
 } = require("../../controllers");
-const { auth, ctrlWrapper, validate, isValidId } = require("../../middlewares");
+const {
+  auth,
+  ctrlWrapper,
+  validate,
+  isValidId,
+  uploadMulter,
+} = require("../../middlewares");
 const {
   addProfileSchema,
   addExperienceSchema,
@@ -41,6 +49,13 @@ router.patch(
   ctrlWrapper(addEducation)
 );
 router.delete("/education/:id", auth, isValidId, ctrlWrapper(deleteEducation));
+router.patch(
+  "/avatar",
+  auth,
+  uploadMulter.single("avatar"),
+  ctrlWrapper(updateAvatar)
+);
+router.get("/avatar/:id", auth, isValidId, ctrlWrapper(getAvatarById));
 router.get("/github/:username", ctrlWrapper(getGitRepos));
 router.get("/", ctrlWrapper(getAllProfiles));
 router.get("/:id", isValidId, ctrlWrapper(getProfileByUserId));

@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import { FaTimes } from "react-icons/fa";
 import { deleteComment } from "../../redux/operations(thunks)";
+import axios from "axios";
+import defUserAvatar from "../../img/userDef.png";
 
 export const CommentItem = ({ comment, postId }) => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.auth.user._id);
 
-  const { _id, text, name, avatar, user, date } = comment;
+  const [avatar, setAvatar] = useState(defUserAvatar);
+
+  const { _id, text, name, user, date } = comment;
+
+  useEffect(() => {
+    (async () => {
+      const res = await axios.get(`/api/profile/avatar/${user}`);
+      setAvatar(res.data);
+    })();
+  }, [user]);
 
   return (
     <div className="comment bg-white p-1 my-1">

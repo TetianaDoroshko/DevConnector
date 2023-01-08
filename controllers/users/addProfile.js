@@ -12,7 +12,11 @@ const addProfile = async (req, res) => {
     status,
     githubusername,
     skills,
-    social: { youtube, facebook, twitter, instagram, linkedin },
+    youtube,
+    facebook,
+    twitter,
+    instagram,
+    linkedin,
   } = req.body;
 
   const skillsData =
@@ -31,11 +35,11 @@ const addProfile = async (req, res) => {
   if (bio) newProfile.bio = bio;
   if (githubusername) newProfile.githubusername = githubusername;
   newProfile.social = {};
-  if (youtube) newProfile.social.youtube = youtube;
-  if (twitter) newProfile.social.twitter = twitter;
-  if (facebook) newProfile.social.facebook = facebook;
-  if (linkedin) newProfile.social.linkedin = linkedin;
-  if (instagram) newProfile.social.instagram = instagram;
+  if (youtube) newProfile.youtube = youtube;
+  if (twitter) newProfile.twitter = twitter;
+  if (facebook) newProfile.facebook = facebook;
+  if (linkedin) newProfile.linkedin = linkedin;
+  if (instagram) newProfile.instagram = instagram;
 
   let profile = await Profile.findOne({ user: _id });
 

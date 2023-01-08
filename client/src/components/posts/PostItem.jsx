@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { FaThumbsDown, FaThumbsUp, FaTimes } from "react-icons/fa";
 import Moment from "react-moment";
@@ -9,11 +9,22 @@ import {
   likePost,
   unlikePost,
 } from "../../redux/operations(thunks)";
+import axios from "axios";
+import defUserAvatar from "../../img/userDef.png";
 
 export const PostItem = ({ post = {}, showActions = true }) => {
-  const { _id, text, name, avatar, user, likes, comments, date } = post;
+  const { _id, text, name, user, likes, comments, date } = post;
   const userId = useSelector((state) => state.auth.user._id);
   const dispatch = useDispatch();
+  const [avatar, setAvatar] = useState(defUserAvatar);
+
+  useEffect(() => {
+    (async () => {
+      const res = await axios.get(`/api/profile/avatar/${user}`);
+      setAvatar(res.data);
+    })();
+  }, [user]);
+
   return (
     <div className="post bg-white p-1 my-1">
       <div>

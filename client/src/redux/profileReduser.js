@@ -11,6 +11,7 @@ import {
   getAllProfiles,
   getProfileById,
   getGitRepos,
+  updateAvatar,
 } from "./operations(thunks)";
 
 const initialState = {
@@ -150,6 +151,20 @@ const profileSlice = createSlice({
       state.loading = false;
     },
     [getGitRepos.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.loading = false;
+    },
+    // update avatar
+    [updateAvatar.pending]: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    [updateAvatar.fulfilled]: (state, { payload }) => {
+      state.profile.user.avatar = payload.avatar;
+      state.profile.user.avatarId = payload.avatarId;
+      state.loading = false;
+    },
+    [updateAvatar.rejected]: (state, { payload }) => {
       state.error = payload;
       state.loading = false;
     },

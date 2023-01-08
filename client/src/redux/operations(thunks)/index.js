@@ -12,6 +12,8 @@ export { addEducation } from "./profile/addEducation";
 export { deleteExperience } from "./profile/deleteExperience";
 export { deleteEducation } from "./profile/deleteEducation";
 export { deleteAccount } from "./profile/deleteAccount";
+export { updateAvatar } from "./profile/updateAvatar";
+export { getAvatarById } from "./profile/getAvatarById";
 
 // User's profiles
 export { getAllProfiles } from "./profile/getAllProfiles";

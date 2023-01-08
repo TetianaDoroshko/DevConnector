@@ -3,7 +3,7 @@ const { Post } = require("../../models");
 
 const unlikePost = async (req, res) => {
   const { id } = req.params;
-
+  const authLoading = useSelector;
   const post = await Post.findById(id);
 
   if (!post) {

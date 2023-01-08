@@ -7,7 +7,7 @@ export const addProfile = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const res = await axios.post("/api/profile", user.formData);
-      console.log(res.data);
+      // console.log(res.data);
       if (user.edit === false) {
         callAlert("Profile created", "success");
       } else {

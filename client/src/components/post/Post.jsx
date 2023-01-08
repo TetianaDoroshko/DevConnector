@@ -12,10 +12,11 @@ export const Post = () => {
   const { postId } = useParams();
   const post = useSelector((state) => state.post.post) || {};
   const loading = useSelector((state) => state.post.loading);
+  const authLoading = useSelector((state) => state.auth.user.loading);
 
   useEffect(() => {
-    dispatch(getPost(postId));
-  }, [dispatch, postId]);
+    if (!authLoading) dispatch(getPost(postId));
+  }, [dispatch, postId, authLoading]);
 
   return (
     <section className="container">
@@ -39,7 +40,10 @@ export const Post = () => {
           </div>
         </>
       ) : (
-        <div>There aren't comments yet</div>
+        <>
+          <CommentForm />
+          <div>There aren't comments yet</div>
+        </>
       )}
     </section>
   );

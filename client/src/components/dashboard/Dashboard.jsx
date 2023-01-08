@@ -14,14 +14,16 @@ export const Dashboard = () => {
   const dispatch = useDispatch();
 
   const loading = useSelector((state) => state.profile.loading);
+  const authLoading = useSelector((state) => state.auth.loading);
+
   const profile = useSelector((state) => state.profile.profile);
   const user = useSelector((state) => state.auth.user);
 
   const location = useLocation();
 
   useEffect(() => {
-    dispatch(getProfile());
-  }, [dispatch]);
+    if (!authLoading) dispatch(getProfile());
+  }, [dispatch, authLoading]);
 
   if (loading && !profile)
     return (

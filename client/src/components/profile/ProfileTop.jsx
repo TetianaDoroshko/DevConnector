@@ -15,7 +15,11 @@ export const ProfileTop = ({ profile }) => {
     company,
     location,
     website,
-    social,
+    twitter,
+    facebook,
+    linkedin,
+    youtube,
+    instagram,
     user: { name, avatar },
   } = profile;
   return (
@@ -33,28 +37,28 @@ export const ProfileTop = ({ profile }) => {
             <FaGlobe className="fab fa-globe" />
           </a>
         )}
-        {social?.twitter && (
-          <a href={social.twitter} target="_blank" rel="noopener noreferrer">
+        {twitter && (
+          <a href={twitter} target="_blank" rel="noopener noreferrer">
             <FaTwitter className="fab fa-twitter" />
           </a>
         )}
-        {social?.facebook && (
-          <a href={social.facebook} target="_blank" rel="noopener noreferrer">
+        {facebook && (
+          <a href={facebook} target="_blank" rel="noopener noreferrer">
             <FaFacebook className="fab fa-facebook" />
           </a>
         )}
-        {social?.linkedin && (
-          <a href={social.linkedin} target="_blank" rel="noopener noreferrer">
+        {linkedin && (
+          <a href={linkedin} target="_blank" rel="noopener noreferrer">
             <FaLinkedin className="fab fa-linkedin " />
           </a>
         )}
-        {social?.youtube && (
-          <a href={social.youtube} target="_blank" rel="noopener noreferrer">
+        {youtube && (
+          <a href={youtube} target="_blank" rel="noopener noreferrer">
             <FaYoutube className="fab fa-youtube " />
           </a>
         )}
-        {social?.instagram && (
-          <a href={social.instagram} target="_blank" rel="noopener noreferrer">
+        {instagram && (
+          <a href={instagram} target="_blank" rel="noopener noreferrer">
             <FaInstagram className="fab fa-instagram" />
           </a>
         )}

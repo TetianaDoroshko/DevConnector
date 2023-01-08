@@ -159,6 +159,8 @@ img {
 }
 
 .alert {
+  position: fixed;
+
   padding: 0.8rem;
   margin: 1rem 0;
   opacity: 0.9;
@@ -233,7 +235,10 @@ img {
 .round-img {
   border-radius: 50%;
 }
-
+.round-img-s {
+  border-radius: 50%;
+  width: 100px;
+}
 .line {
   height: 1px;
   background: #ccc;
@@ -287,6 +292,13 @@ button {
   padding: 0.5rem;
   width: 4rem;
 }
+.form-avatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* icons */
 .icon-fa {
   height: 40px;
   width: 40px;

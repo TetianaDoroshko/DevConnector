@@ -11,6 +11,8 @@ const getGitRepos = require("./users/getGitRepos");
 const getAllProfiles = require("./users/getAllProfiles");
 const getProfileByUserId = require("./users/getProfileByUserId");
 const deleteMyProfile = require("./users/deleteMyProfile");
+const updateAvatar = require("./users/updateAvatar");
+const getAvatarById = require("./users/getAvatarById");
 
 const getAllPosts = require("./posts/getAllPosts");
 const createPost = require("./posts/createPost");
@@ -34,6 +36,8 @@ module.exports = {
   getAllProfiles,
   getProfileByUserId,
   deleteMyProfile,
+  updateAvatar,
+  getAvatarById,
   getAllPosts,
   createPost,
   getPostById,

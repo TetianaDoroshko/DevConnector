@@ -87,22 +87,20 @@ const profileSchema = new Schema(
         },
       },
     ],
-    social: {
-      youtube: {
-        type: String,
-      },
-      twitter: {
-        type: String,
-      },
-      facebook: {
-        type: String,
-      },
-      linkedin: {
-        type: String,
-      },
-      instagram: {
-        type: String,
-      },
+    youtube: {
+      type: String,
+    },
+    twitter: {
+      type: String,
+    },
+    facebook: {
+      type: String,
+    },
+    linkedin: {
+      type: String,
+    },
+    instagram: {
+      type: String,
     },
   },
   { versionKey: false, timestamps: true }
