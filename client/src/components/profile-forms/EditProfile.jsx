@@ -41,12 +41,6 @@ export const EditProfile = () => {
       [e.target.name]: e.target.value,
     }));
   };
-  // const onInputSocialChange = (e) => {
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     social: { ...prevState.social, [e.target.name]: e.target.value },
-  //   }));
-  // };
 
   const onFormSubmit = (e) => {
     e.preventDefault();

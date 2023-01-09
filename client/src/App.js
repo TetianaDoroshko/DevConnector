@@ -20,6 +20,7 @@ import { ProfilesList } from "./components/profiles/ProfilesList";
 import { Profile } from "./components/profile/Profile";
 import { Posts } from "./components/posts/Posts";
 import { Post } from "./components/post/Post";
+import { NotFoundPage } from "./components/routing/NotFoundPage";
 
 const App = () => {
   const alerts = useSelector((store) => store.alert);
@@ -42,6 +43,7 @@ const App = () => {
       <Navbar />
       <Alert alerts={alerts} />
       <Routes>
+        <Route path="/" element={<Landing />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profiles" element={<ProfilesList />} />
@@ -55,8 +57,7 @@ const App = () => {
           <Route path="/posts" element={<Posts />} />
           <Route path="/post/:postId" element={<Post />} />
         </Route>
-
-        <Route path="/" element={<Landing />} />
+        <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </>
   );

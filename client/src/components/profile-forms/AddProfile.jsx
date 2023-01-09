@@ -7,7 +7,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { addProfile } from "../../redux/operations(thunks)/profile/addProfile";
 
 export const CreateProfile = () => {
@@ -29,6 +29,7 @@ export const CreateProfile = () => {
 
   const locationPage = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onInputChange = (e) => {
     setFormData((prevState) => ({
@@ -39,16 +40,13 @@ export const CreateProfile = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    // const newProfile = {company, website, location, status, skills, githubusername};
-    // if(company) newProfile.company = company
-    // if(bio) newProfile.bio = bio;
-    // if(twitter) newProfile.social.twitter = twitter;
-    // if(facebook) newProfile.social.facebook = facebook;
-    // if(linkedin) newProfile.social.linkedin = linkedin;
-    // if(youtube) newProfile.social.linkedin = youtube;
-    // if(instagram) newProfile.social.instagram = instagram;
-
-    dispatch(addProfile({ formData, edit: false }));
+    dispatch(
+      addProfile({
+        formData,
+        edit: false,
+        navigate: () => navigate("/dashboard"),
+      })
+    );
   };
 
   const {
