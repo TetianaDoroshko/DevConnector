@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const { default: mongoose } = require("mongoose");
 require("dotenv").config();
 const {
@@ -43,6 +44,12 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
   const { status = 500, message = "Server error" } = err;
   res.status(status).json({ message });
+});
+
+app.use(express.static("client/build"));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 
 app.listen(PORT, () => console.log(`Server stated on port ${PORT}`));
