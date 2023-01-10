@@ -28,6 +28,8 @@ connectDB();
 
 app.use(express.json({ extended: false }));
 
+app.use(express.static("client/build"));
+
 app.use("/api/users", usersRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/profile", profileRouter);
@@ -41,8 +43,6 @@ app.use((err, req, res, next) => {
   const { status = 500, message = "Server error" } = err;
   res.status(status).json({ message });
 });
-
-app.use(express.static("client/build"));
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
