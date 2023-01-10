@@ -28,10 +28,6 @@ connectDB();
 
 app.use(express.json({ extended: false }));
 
-app.get("/", (req, res) => {
-  res.send("API is running");
-});
-
 app.use("/api/users", usersRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/profile", profileRouter);
