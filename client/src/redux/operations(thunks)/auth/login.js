@@ -2,7 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { callAlert } from "../../../helpers/alerts";
 import { setAuthToken } from "../../../helpers/setAuthToken";
-import BASE_URL from "../../../helpers/variables";
+import { BASE_URL } from "../../../helpers/variables";
+
 export const login = createAsyncThunk("auth/login", async (data, thunkAPI) => {
   try {
     const res = await axios.post(`${BASE_URL}/api/auth`, data);
