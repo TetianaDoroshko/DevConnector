@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
 const { default: mongoose } = require("mongoose");
 require("dotenv").config();
 const {
@@ -27,7 +28,7 @@ const connectDB = async () => {
 connectDB();
 
 app.use(express.json({ extended: false }));
-
+app.use(cors());
 app.use(express.static("client/build"));
 
 app.use("/api/users", usersRouter);
